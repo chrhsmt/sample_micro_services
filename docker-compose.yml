@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  front:
+    build: ./front
+    tty: true
+    command: yarn dev
+    volumes:
+      - ./front:/app
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+    restart: always # エラーなどでコンテナが落ちた際に自動で再起動してくれる
+    ports:
+      - "8080:3000"
+  # bff:
+  # backend_j:
+  # backend_g:
+  # mysql:
+
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: ./.docker/app/Dockerfile
+  #   environment:
+  #     - BINDING=0.0.0.0
+  #     - LANG=C.UTF-8
+  #     - DYNAMODB_HOST=dynamodb
+  #     - DYNAMODB_TABLE_NAME=dev-hu-access
+  #     - MONGO_HOST=mongo
+  #   env_file:
+  #     - ./.env
+  #   ports:
+  #     - "${EXTERNAL_RAILS_PORT:-3000}:3000"
+  #   tty: true
+  #   volumes:
+  #     - .:/fo-analyze:cached
+  #     - bundle:/usr/local/bundle
+  #   working_dir: /fo-analyze
+
+# volumes:
