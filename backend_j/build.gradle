@@ -1,13 +1,13 @@
 plugins {
 	id 'org.springframework.boot' version '2.2.6.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'com.google.cloud.tools.jib' version '2.1.0'
 	id 'java'
-	id 'war'
 }
 
 group = 'com.chrhsmt.sample'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = '13'
 
 configurations {
 	compileOnly {
@@ -23,7 +23,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
@@ -31,4 +30,13 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+jib {
+	from {
+		image 'openjdk:13.0.2-jdk-slim'
+	}
+	to {
+		image 'chrhsmt/sample'
+	}
 }
