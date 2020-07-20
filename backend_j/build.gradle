@@ -3,6 +3,8 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'com.google.cloud.tools.jib' version '2.1.0'
 	id 'java'
+	id 'idea'
+	id('io.ebean') version '12.3.7'
 }
 
 group = 'com.chrhsmt.sample'
@@ -22,6 +24,12 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // （1）Spring Data JPAを使う設定: (省略)
 	runtimeOnly 'com.h2database:h2' // （2）H2データベースを使う設定
+
+	// EBEAN
+	implementation 'io.ebean:ebean:12.3.7'
+	implementation 'io.ebean:ebean-querybean:12.3.7'
+	annotationProcessor 'io.ebean:querybean-generator:12.3.7'
+	testImplementation 'io.ebean:ebean-test:12.3.7'
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'

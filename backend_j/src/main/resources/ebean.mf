@@ -1,0 +1,5 @@
+entity-packages: com.chrhsmt.sample.microservice.model
+transactional-packages: com.chrhsmt.sample.microservice
+querybean-packages: com.chrhsmt.sample.microservice
+profile-location: true
+
